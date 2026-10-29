@@ -2,8 +2,21 @@ import sqlite3
 import hashlib
 import os
 import json
+import shutil
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "diet_coke.db")
+ORIGINAL_DB_PATH = os.path.join(os.path.dirname(__file__), "diet_coke.db")
+
+# In serverless environments (Vercel / Lambda), filesystem is read-only except /tmp
+if os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
+    TMP_DB = "/tmp/diet_coke.db"
+    if not os.path.exists(TMP_DB) and os.path.exists(ORIGINAL_DB_PATH):
+        try:
+            shutil.copy2(ORIGINAL_DB_PATH, TMP_DB)
+        except Exception:
+            pass
+    DB_PATH = TMP_DB if os.path.exists(TMP_DB) else ORIGINAL_DB_PATH
+else:
+    DB_PATH = ORIGINAL_DB_PATH
 
 DEFAULT_PRODUCTS = [
     {
