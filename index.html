@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>DIET COKE — THAT'S SO DIET COKE</title>
+    <meta name="description" content="Cinematic interactive Diet Coke promotional experience. Bold taste. Zero sugar. Maximum refreshment.">
+    <link rel="icon" type="image/png" href="/assets/can_reference.jpg">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+    <!-- Custom Animated Desktop Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Carbonation & Fizz Particles Fullscreen Physics Canvas -->
+    <canvas id="fizzCanvas"></canvas>
+
+    <!-- Full-Screen Red Liquid Transition Wave Overlay -->
+    <div class="red-transition-overlay" id="redTransitionOverlay">
+        <div class="transition-text">DIET COKE.</div>
+    </div>
+
+    <!-- Floating Glassmorphic Top Navbar -->
+    <header class="floating-navbar" id="mainNav">
+        <a href="#sec-01" class="nav-brand">
+            <span class="brand-badge">EST. 1982</span>
+            <span class="brand-title">Diet Coke</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#sec-01">HOME</a></li>
+            <li><a href="#sec-03">FLAVORS</a></li>
+            <li><a href="#sec-04">EXPERIENCE</a></li>
+            <li><a href="#sec-08">ABOUT</a></li>
+            <li><a href="#playground">PLAYGROUND</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <button class="sound-toggle-btn" id="soundToggleBtn" aria-label="Toggle Sound">
+                <span class="sound-icon-wave"></span>
+                <span class="sound-label">SOUND OFF</span>
+            </button>
+            <button class="inspo-pill-btn-red buy-now-trigger" style="padding: 10px 22px; font-size: 11px;">BUY NOW</button>
+            <a href="/admin" class="nav-admin-link">CMS</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Navigation Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <a href="#sec-01" class="mobile-nav-link">HOME (01)</a>
+        <a href="#sec-02" class="mobile-nav-link">THE FIZZ (02)</a>
+        <a href="#sec-03" class="mobile-nav-link">FLAVORS (03)</a>
+        <a href="#sec-04" class="mobile-nav-link">PRESS PLAY (04)</a>
+        <a href="#sec-05" class="mobile-nav-link">BRIGHTER DAYS (05)</a>
+        <a href="#sec-06" class="mobile-nav-link">LIFESTYLE (06)</a>
+        <a href="#sec-07" class="mobile-nav-link">REFRESHMENT (07)</a>
+        <a href="#sec-08" class="mobile-nav-link">SUSTAINABILITY (08)</a>
+        <a href="#sec-09" class="mobile-nav-link">MOMENTS (09)</a>
+        <a href="#sec-10" class="mobile-nav-link">MORE MOMENTS (10)</a>
+        <a href="#playground" class="mobile-nav-link" style="color:var(--dc-red);">FIZZ PLAYGROUND</a>
+        <a href="/admin" class="mobile-nav-link" style="color:#FFF; opacity:0.7;">ADMIN CMS</a>
+    </div>
+
+    <!-- Global Live Announcement Marquee -->
+    <div class="announcement-ticker-wrap">
+        <div class="ticker-track">
+            <span class="ticker-content" id="announcementTicker">/// LIVE CAN EXPERIENCE /// ZERO SUGAR /// UNAPOLOGETICALLY CRISP /// 100% RECYCLABLE ALUMINUM /// THAT'S SO DIET COKE ///</span>
+            <span class="ticker-content">/// LIVE CAN EXPERIENCE /// ZERO SUGAR /// UNAPOLOGETICALLY CRISP /// 100% RECYCLABLE ALUMINUM /// THAT'S SO DIET COKE ///</span>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         SECTION 01 / 10: SAME ICONIC TASTE ZERO SUGAR (HERO)
+         ===================================================================== -->
+    <section class="inspo-section inspo-sec-01" id="sec-01">
+        <div class="inspo-container">
+            <div class="inspo-content">
+                <div class="hero-badge-tag" style="margin-bottom: 20px;">
+                    <span class="hero-badge-dot"></span>
+                    <span>EST. 1982 &bull; ZERO SUGAR</span>
+                </div>
+
+                <h1 class="inspo-headline">
+                    <span class="hl-line" id="heroWord1">SAME</span>
+                    <span class="hl-line text-white" id="heroWord2">ICONIC TASTE</span>
+                    <span class="hl-line accent-red" id="heroWord3">ZERO SUGAR</span>
+                </h1>
+
+                <p class="inspo-subheadline" id="heroSubheadline">
+                    BOLD. REFRESHING. ALWAYS A GOOD IDEA.
+                </p>
+
+                <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                    <a href="#sec-03" class="inspo-pill-btn-white" id="heroCtaBtn">
+                        EXPLORE <span class="btn-arrow">&gt;</span>
+                    </a>
+                    <a href="#sec-04" class="inspo-pill-btn-fizz">
+                        POP CAN <span class="play-triangle">▶</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="inspo-visual-stage" style="position: relative;">
+                <!-- Fallback/Base Hero Ice Splash Visual -->
+                <img src="/assets/inspo/hero_ice_can.jpg" alt="Diet Coke Silver Can Ice Splash" class="inspo-visual-img floating" id="heroImgBackdrop">
+                <!-- 3D Three.js Interactive Can Canvas Layer -->
+                <div id="threeCanContainer" style="position: absolute; inset: 0; pointer-events: none; z-index: 5;"></div>
+            </div>
+        </div>
+
+        <div class="inspo-section-counter">01 / 10</div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 02 / 10: A FIZZ THAT MOVES YOU
+         ===================================================================== -->
+    <section class="inspo-section inspo-sec-02" id="sec-02">
+        <div class="inspo-container">
+            <div class="inspo-content">
+                <h2 class="inspo-headline">
+                    <span class="hl-line">A FIZZ THAT</span>
+                    <span class="hl-line accent-red">MOVES YOU</span>
+                </h2>
+
+                <p class="inspo-subheadline">
+                    Crisp bubbles. Bold moments. Diet Coke keeps life exciting.
+                </p>
+
+                <button class="inspo-pill-btn-fizz" id="feelTheFizzBtn">
+                    FEEL THE FIZZ <span class="play-triangle">▶</span>
+                </button>
+            </div>
+
+            <div class="inspo-visual-stage">
+                <img src="/assets/inspo/fizz_wave_can.jpg" alt="Diet Coke Cola Vortex Wave" class="inspo-visual-img floating">
+            </div>
+        </div>
+
+        <div class="inspo-section-counter">02 / 10</div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 03 / 10: FIND YOUR FLAVOR (5 CANS RED ALCOVE)
+         ===================================================================== -->
+    <section class="inspo-section inspo-sec-03" id="sec-03">
+        <div class="inspo-container full-center" style="max-width: 1200px;">
+            <div class="inspo-content center-text">
+                <h2 class="inspo-headline">
+                    <span class="hl-line">FIND</span>
+                    <span class="hl-line accent-red">YOUR FLAVOR</span>
+                </h2>
+                <p class="inspo-subheadline" style="max-width: 650px;">
+                    Same bold taste. More ways to enjoy.
+                </p>
+            </div>
+
+            <!-- The Red Architectural Alcove Showcase -->
+            <div class="alcove-vault">
+                <button class="alcove-nav-arrow prev" id="alcovePrev" aria-label="Previous Flavor">&lt;</button>
+                <button class="alcove-nav-arrow next" id="alcoveNext" aria-label="Next Flavor">&gt;</button>
+
+                <div class="alcove-cans-row" id="alcoveCansRow">
+                    <!-- Can 1: Classic -->
+                    <div class="alcove-can-item active" data-flavor="classic">
+                        <img src="/assets/inspo/flavor_can_classic.png" alt="Diet Coke Classic">
+                        <span class="alcove-can-label">CLASSIC</span>
+                    </div>
+
+                    <!-- Can 2: Lime -->
+                    <div class="alcove-can-item" data-flavor="lime">
+                        <img src="/assets/inspo/flavor_can_lime.png" alt="Diet Coke Lime">
+                        <span class="alcove-can-label" style="color: #69F0AE;">LIME</span>
+                    </div>
+
+                    <!-- Can 3: Cherry -->
+                    <div class="alcove-can-item" data-flavor="cherry">
+                        <img src="/assets/inspo/flavor_can_cherry.png" alt="Diet Coke Cherry">
+                        <span class="alcove-can-label" style="color: #FF5252;">CHERRY</span>
+                    </div>
+
+                    <!-- Can 4: Vanilla -->
+                    <div class="alcove-can-item" data-flavor="vanilla">
+                        <img src="/assets/inspo/flavor_can_vanilla.png" alt="Diet Coke Vanilla">
+                        <span class="alcove-can-label" style="color: #FFD54F;">VANILLA</span>
+                    </div>
+
+                    <!-- Can 5: Raspberry -->
+                    <div class="alcove-can-item" data-flavor="raspberry">
+                        <img src="/assets/inspo/flavor_can_raspberry.png" alt="Diet Coke Raspberry">
+                        <span class="alcove-can-label" style="color: #FF4081;">RASPBERRY</span>
+                    </div>
+                </div>
+
+                <div class="alcove-floor"></div>
+            </div>
+
+            <!-- Dynamic Flavor Title & Description -->
+            <div class="alcove-active-name" id="alcoveActiveFlavorName">DIET COKE CLASSIC</div>
+            <p class="alcove-active-desc" id="alcoveActiveDesc">
+                The iconic, crisp, zero-sugar silver legend perfected since 1982.
+            </p>
+        </div>
+
+        <div class="inspo-section-counter">03 / 10</div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 04 / 10: PRESS PLAY (INTERACTIVE PULL TAB CAN OPENER)
+         ===================================================================== -->
+    <section class="inspo-section inspo-sec-04" id="sec-04">
+        <div class="inspo-container">
+            <div class="inspo-content">
+                <h2 class="inspo-headline">
+                    <span class="hl-line">PRESS</span>
+                    <span class="hl-line accent-red">PLAY</span>
+                </h2>
+
+                <p class="inspo-subheadline">
+                    The sound of something refreshing.
+                </p>
+
+                <button class="inspo-pill-btn-white" id="openTheCanBtn">
+                    OPEN THE CAN <span class="play-triangle">▶</span>
+                </button>
+            </div>
+
+            <!-- Macro Can Top with Interactive Pull-Tab Engine -->
+            <div class="inspo-visual-stage" style="position: relative;">
+                <div class="opener-stage" id="canOpenerStage" style="width: 100%; max-width: 440px; margin: 0 auto;">
+                    <div class="opener-fizz-spray" id="openerSpray"></div>
+                    <div class="opener-status" id="openerStatus">PULL TO OPEN</div>
+
+                    <div class="opener-lid-mockup">
+                        <div class="opener-seal" id="openerSeal"></div>
+                        <div class="opener-tab" id="openerTab">
+                            <div class="tab-rivet"></div>
+                            <div class="tab-hole"></div>
+                        </div>
+                    </div>
+
+                    <p class="opener-instruction" id="openerInstruction">
+                        Drag the aluminum tab upward or pull with your finger
+                    </p>
+
+                    <button class="opener-reset-btn" id="openerResetBtn">
+                        CRACK ANOTHER CAN
+                    </button>
+                </div>
+
+                <!-- 3 Sensory Pills on Right -->
+                <div class="sensory-pills-stack">
+                    <button class="sensory-pill" id="sensorySoundBtn">
+                        <span class="pill-dot"></span> THE SOUND
+                    </button>
+                    <button class="sensory-pill" id="sensoryFizzBtn">
+                        <span class="pill-dot"></span> THE FIZZ
+                    </button>
+                    <button class="sensory-pill" id="sensoryFeelingBtn">
+                        <span class="pill-dot"></span> THE FEELING
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="inspo-section-counter">04 / 10</div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 05 / 10: GOOD TASTE FOR BRIGHTER DAYS (CAR HOOD SUNSET)
+         ===================================================================== -->
+    <section class="inspo-section inspo-sec-05" id="sec-05">
+        <div class="inspo-container">
+            <div class="inspo-content">
+                <h2 class="inspo-headline">
+                    <span class="hl-line">GOOD TASTE</span>
+                    <span class="hl-line accent-red">FOR BRIGHTER DAYS</span>
+                </h2>
+
+                <p class="inspo-subheadline">
+                    From busy mornings to late night plans, Diet Coke fits every moment.
+                </p>
+
+                <button class="inspo-pill-btn-white buy-now-trigger">
+                    DISCOVER MOMENTS <span class="btn-arrow">&gt;</span>
+                </button>
+
+                <!-- Interactive Moments Switcher Thumbnails -->
+                <div class="moments-thumbnails-row">
+                    <div class="moment-thumb-card active" data-moment="0" style="background-image: url('/assets/inspo/car_hood_can.jpg');">
+                        <div class="thumb-label">Sunset Drive</div>
+                    </div>
+                    <div class="moment-thumb-card" data-moment="1" style="background-image: url('/assets/inspo/sec05_brighter_days.jpg');">
+                        <div class="thumb-label">Golden Beach</div>
+                    </div>
+                    <div class="moment-thumb-card" data-moment="2" style="background-image: url('/assets/inspo/headphones_can.jpg');">
+                        <div class="thumb-label">Neon City</div>
+                    </div>
+                    <div class="moment-thumb-card" data-moment="3" style="background-image: url('/assets/inspo/sec06_different_places.jpg');">
+                        <div class="thumb-label">Urban Rush</div>
+                    </div>
+                </div>
+
+                <div class="moment-active-indicator" id="momentActiveTitle">SUNSET HIGHWAY DRIVE</div>
+            </div>
+
+            <div class="inspo-visual-stage" id="momentsStageBackdrop">
+                <img src="/assets/inspo/car_hood_can.jpg" alt="Diet Coke on Car Hood Sunset" class="inspo-visual-img floating">
+            </div>
+        </div>
+
+        <div class="inspo-section-counter">05 / 10</div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 06 / 10: SAME ENERGY DIFFERENT PLACES (LIFESTYLE)
+         ===================================================================== -->
+    <section class="inspo-section inspo-sec-06" id="sec-06">
+        <div class="inspo-container">
+            <div class="inspo-content">
+                <h2 class="inspo-headline">
+                    <span class="hl-line">SAME ENERGY</span>
+                    <span class="hl-line accent-red">DIFFERENT PLACES</span>
+                </h2>
+
+                <p class="inspo-subheadline">
+                    Gym, work, travel or night out — Diet Coke goes wherever you do.
+                </p>
+
+                <!-- 5 Lifestyle Interactive Category Pills -->
+                <div class="lifestyle-pills-row">
+                    <button class="lifestyle-pill-btn active" data-lifestyle="gym">
+                        <span>🏋️</span><span>GYM</span>
+                    </button>
+                    <button class="lifestyle-pill-btn" data-lifestyle="work">
+                        <span>💻</span><span>WORK</span>
+                    </button>
+                    <button class="lifestyle-pill-btn" data-lifestyle="travel">
+                        <span>✈️</span><span>TRAVEL</span>
+                    </button>
+                    <button class="lifestyle-pill-btn" data-lifestyle="food">
+                        <span>🍕</span><span>FOOD</span>
+                    </button>
+                    <button class="lifestyle-pill-btn" data-lifestyle="night">
+                        <span>🎵</span><span>NIGHT OUT</span>
+                    </button>
+                </div>
+
+                <div class="lifestyle-active-label" id="lifestyleSceneTitle">POST-WORKOUT RECHARGE</div>
+            </div>
+
+            <div class="inspo-visual-stage">
+                <img src="/assets/inspo/headphones_can.jpg" alt="Diet Coke Headphones on Neon Wet Street" class="inspo-visual-img floating">
+            </div>
+        </div>
+
+        <div class="inspo-section-counter">06 / 10</div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 07 / 10: REAL REFRESHMENT (CRISP WHITE THEME)
+         ===================================================================== -->
+    <section class="inspo-section inspo-sec-07" id="sec-07">
+        <div class="inspo-container">
+            <div class="inspo-content">
+                <h2 class="inspo-headline text-dark">
+                    <span class="hl-line">REAL</span>
+                    <span class="hl-line accent-red">REFRESHMENT</span>
+                </h2>
+
+                <p class="inspo-subheadline text-dark">
+                    Zero Sugar. Bold Taste. Made for what's next.
+                </p>
+
+                <!-- 3 Quality Badges matching inspo -->
+                <div class="quality-badges-row">
+                    <div class="quality-badge-item">
+                        <div class="badge-icon-wrap">%</div>
+                        <div class="badge-title">ZERO SUGAR</div>
+                    </div>
+                    <div class="quality-badge-item">
+                        <div class="badge-icon-wrap">🧊</div>
+                        <div class="badge-title">CRISP TASTE</div>
+                    </div>
+                    <div class="quality-badge-item">
+                        <div class="badge-icon-wrap">★</div>
+                        <div class="badge-title">ICONIC QUALITY</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inspo-visual-stage">
+                <img src="/assets/inspo/white_liquid_wave.jpg" alt="Diet Coke Clean Liquid Ribbon Wave" class="inspo-visual-img floating">
+            </div>
+        </div>
+
+        <div class="inspo-section-counter text-dark">07 / 10</div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 08 / 10: A BRIGHTER TOMORROW (ECO BOTANICAL)
+         ===================================================================== -->
+    <section class="inspo-section inspo-sec-08" id="sec-08">
+        <div class="inspo-container">
+            <div class="inspo-content">
+                <h2 class="inspo-headline">
+                    <span class="hl-line">A BRIGHTER</span>
+                    <span class="hl-line accent-red">TOMORROW.</span>
+                </h2>
+
+                <p class="inspo-subheadline">
+                    We're working towards a more sustainable future for the moments that matter.
+                </p>
+
+                <button class="inspo-pill-btn-white" id="ecoCommitmentBtn">
+                    OUR COMMITMENT <span class="btn-arrow">&gt;</span>
+                </button>
+
+                <div style="display: flex; gap: 24px; margin-top: 32px; flex-wrap: wrap;">
+                    <div style="font-family: var(--dc-font-mono); font-size: 12px; font-weight: 800; color: #69F0AE; letter-spacing: 1.5px;">
+                        ✔ 100% INFINITELY RECYCLABLE ALUMINUM
+                    </div>
+                    <div style="font-family: var(--dc-font-mono); font-size: 12px; font-weight: 800; color: #69F0AE; letter-spacing: 1.5px;">
+                        ✔ ZERO SINGLE-USE PLASTIC
+                    </div>
+                </div>
+            </div>
+
+            <div class="inspo-visual-stage">
+                <img src="/assets/inspo/nature_can.jpg" alt="Diet Coke Can in Rainforest Mist" class="inspo-visual-img floating">
+            </div>
+        </div>
+
+        <div class="inspo-section-counter">08 / 10</div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 09 / 10: REAL PEOPLE REAL MOMENTS (POLAROID GALLERY)
+         ===================================================================== -->
+    <section class="inspo-section inspo-sec-09" id="sec-09">
+        <div class="inspo-container full-center">
+            <div class="inspo-content center-text">
+                <h2 class="inspo-headline text-dark">
+                    <span class="hl-line">REAL PEOPLE</span>
+                    <span class="hl-line accent-red">REAL MOMENTS</span>
+                </h2>
+                <p class="inspo-subheadline text-dark">
+                    Tag your <span class="accent-red" style="font-weight: 900;">#DietCokeMoment</span>
+                </p>
+            </div>
+
+            <!-- Draggable & Tiltable Interactive Polaroid Wall -->
+            <div class="polaroid-cluster-wrap">
+                <!-- Polaroid 1 -->
+                <div class="polaroid-item" style="top: 20px; left: calc(50% - 300px); transform: rotate(-6deg);">
+                    <div class="polaroid-tape"></div>
+                    <img src="/assets/inspo/car_hood_can.jpg" alt="Sunset Drive Moment" draggable="false">
+                    <div class="polaroid-caption">
+                        <span>#GoldenHourChill</span>
+                        <button class="polaroid-like-btn" aria-label="Like Moment">
+                            ♥ <span class="like-count">99</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Polaroid 2 (Center) -->
+                <div class="polaroid-item" style="top: 50px; left: calc(50% - 120px); transform: rotate(3deg); z-index: 10;">
+                    <div class="polaroid-tape" style="transform: translateX(-50%) rotate(2deg);"></div>
+                    <img src="/assets/inspo/headphones_can.jpg" alt="Beatmaker Studio Moment" draggable="false">
+                    <div class="polaroid-caption">
+                        <span>#MidnightBeats</span>
+                        <button class="polaroid-like-btn" aria-label="Like Moment">
+                            ♥ <span class="like-count">142</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Polaroid 3 -->
+                <div class="polaroid-item" style="top: 25px; left: calc(50% + 70px); transform: rotate(7deg);">
+                    <div class="polaroid-tape"></div>
+                    <img src="/assets/inspo/polaroids_cluster.jpg" alt="Festival Vibe Moment" draggable="false">
+                    <div class="polaroid-caption">
+                        <span>#PureSilverEnergy</span>
+                        <button class="polaroid-like-btn" aria-label="Like Moment">
+                            ♥ <span class="like-count">218</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inspo-section-counter text-dark">09 / 10</div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 10 / 10: MORE GOOD MOMENTS AHEAD (FINALE & BUY NOW)
+         ===================================================================== -->
+    <section class="inspo-section inspo-sec-10" id="sec-10">
+        <div class="inspo-container">
+            <div class="inspo-content">
+                <h2 class="inspo-headline text-dark">
+                    <span class="hl-line">MORE</span>
+                    <span class="hl-line">GOOD MOMENTS</span>
+                    <span class="hl-line accent-red">AHEAD</span>
+                </h2>
+
+                <p class="inspo-subheadline text-dark">
+                    Grab a Diet Coke and make the next moment yours.
+                </p>
+
+                <button class="inspo-pill-btn-red buy-now-trigger" style="font-size: 15px; padding: 20px 48px;">
+                    BUY NOW <span class="play-triangle">▶</span>
+                </button>
+            </div>
+
+            <div class="inspo-visual-stage">
+                <img src="/assets/inspo/finale_splash_can.jpg" alt="Diet Coke Finale Ice Splash" class="inspo-visual-img floating">
+            </div>
+        </div>
+
+        <div class="inspo-section-counter text-dark">10 / 10</div>
+    </section>
+
+    <!-- =====================================================================
+         THE PLAYGROUND: THE 6 FIZZ EXPERIMENTS (RETAINING & EXPANDING PLAYFUL MODES)
+         ===================================================================== -->
+    <section class="interactive-labs-section" id="playground" style="padding: 120px 5vw; background: #08090C;">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <div class="section-tag">PHYSICAL & DIGITAL PLAYGROUND</div>
+            <h2 class="section-giant-title" style="margin: 0 auto 16px;">THE FIZZ EXPERIMENTS</h2>
+            <p style="color: var(--dc-silver); max-width: 650px; margin: 0 auto;">
+                6 tactile, animated ways to shake, clink, wipe, pop, remix, and make beats with cold Diet Coke silver.
+            </p>
+        </div>
+
+        <div class="interactive-labs-grid">
+            <!-- 1. The Pressure Shaker -->
+            <div class="lab-card">
+                <div>
+                    <div class="lab-card-header">
+                        <span class="lab-tag">EXPERIMENT 01</span>
+                        <span id="shakerPsiValue" style="font-family: var(--dc-font-mono); font-size: 13px; font-weight: 800;">0 PSI</span>
+                    </div>
+                    <h3 class="lab-title">Shake to Detonate</h3>
+                    <p class="lab-desc">Tap rapidly or shake your phone to build up high-velocity carbonation pressure.</p>
+                </div>
+
+                <div class="shaker-stage">
+                    <div class="shaker-spray" id="shakerSpray"></div>
+                    <div class="shaker-can-mockup" id="shakerCanMockup">DIET COKE</div>
+                </div>
+
+                <div>
+                    <div class="shaker-pressure-bar-track">
+                        <div class="shaker-pressure-bar-fill" id="shakerPsiFill"></div>
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 14px;">
+                        <button class="cta-button" id="shakerTriggerBtn" style="flex: 1; padding: 12px; font-size: 12px; justify-content: center;">
+                            ⚡ SHAKE CAN
+                        </button>
+                        <button class="cta-secondary-btn" id="shakerReleaseBtn" style="display: none; padding: 12px; font-size: 12px; background: #FF1A46; color: #FFF; border-color: #FF1A46; justify-content: center;">
+                            💥 GEYSER!
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Commercial Beatpad -->
+            <div class="lab-card">
+                <div>
+                    <div class="lab-card-header">
+                        <span class="lab-tag">EXPERIMENT 02</span>
+                        <span style="font-size: 11px; font-weight: 700; color: var(--dc-silver-dark);">4-PAD SYNTH</span>
+                    </div>
+                    <h3 class="lab-title">Commercial Beatpad</h3>
+                    <p class="lab-desc">Jam on authentic procedural Diet Coke audio cues and produce a commercial beat.</p>
+                </div>
+
+                <div class="beatpad-grid">
+                    <button class="beatpad-key" data-pad="0">
+                        <span class="pad-icon">💥</span>
+                        <span>CAN POP</span>
+                    </button>
+                    <button class="beatpad-key" data-pad="1">
+                        <span class="pad-icon">🧊</span>
+                        <span>ICE CLINK</span>
+                    </button>
+                    <button class="beatpad-key" data-pad="2">
+                        <span class="pad-icon">💨</span>
+                        <span>FIZZ BLAST</span>
+                    </button>
+                    <button class="beatpad-key" data-pad="3">
+                        <span class="pad-icon">🔔</span>
+                        <span>RIM TAP</span>
+                    </button>
+                </div>
+
+                <div class="beatpad-eq">
+                    <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+                    <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+                    <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+                </div>
+            </div>
+
+            <!-- 3. Condensation Frost Wiper -->
+            <div class="lab-card">
+                <div>
+                    <div class="lab-card-header">
+                        <span class="lab-tag">EXPERIMENT 03</span>
+                        <span id="frostCounter" style="font-family: var(--dc-font-mono); font-size: 12px; font-weight: 800; color: #00E676;">0% CLEARED</span>
+                    </div>
+                    <h3 class="lab-title">Scratch the Frost</h3>
+                    <p class="lab-desc">Drag your finger or cursor to scrape off the sub-zero frost and reveal the cold aluminum can.</p>
+                </div>
+
+                <div class="frost-stage-wrap">
+                    <div class="frost-background-content">
+                        <span style="font-family: var(--dc-font-headline); font-size: 24px; color: var(--dc-red); letter-spacing: 2px;">THAT'S SO DIET COKE</span>
+                        <span style="font-size: 11px; letter-spacing: 2px; color: #FFF; font-weight: 800; margin-top: 4px;">SUB-ZERO ALUMINUM CHILL</span>
+                    </div>
+                    <canvas id="frostCanvas"></canvas>
+                </div>
+
+                <button class="carousel-select-btn" id="frostResetBtn" style="width: 100%; border-color: rgba(255,255,255,0.2);">
+                    RE-FREEZE GLASS
+                </button>
+            </div>
+
+            <!-- 4. Custom Flavor Lab -->
+            <div class="lab-card">
+                <div>
+                    <div class="lab-card-header">
+                        <span class="lab-tag">EXPERIMENT 04</span>
+                        <span style="font-size: 11px; font-weight: 700; color: var(--dc-silver-dark);">STUDIO LAB</span>
+                    </div>
+                    <h3 class="lab-title">Custom Flavor Lab</h3>
+                    <p class="lab-desc">Mix your own bespoke Diet Coke edition with custom colors and names.</p>
+                </div>
+
+                <div class="lab-preview-can-wrap">
+                    <div class="lab-preview-can" id="labCanPreview">
+                        <span class="lab-can-badge" id="labBadgePreview">SILVER</span>
+                        <span class="lab-can-name" id="labNamePreview">YOUR EDITION</span>
+                        <span style="font-size: 8px; color: rgba(255,255,255,0.7);">0 SUGAR</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="lab-controls-grid">
+                        <select class="lab-select" id="labBase">
+                            <option value="silver">Brushed Silver</option>
+                            <option value="obsidian">Carbon Obsidian</option>
+                        </select>
+                        <select class="lab-select" id="labInfusion">
+                            <option value="#E4002B">Classic Red</option>
+                            <option value="#FF4081">Electric Berry</option>
+                            <option value="#00E676">Sublime Lime</option>
+                            <option value="#FF9100">Blood Orange</option>
+                        </select>
+                    </div>
+                    <input type="text" id="labNameInput" class="form-input" placeholder="Name your edition..." style="margin-bottom: 12px; padding: 10px; font-size: 12px;" value="MY DIET COKE">
+                    <button class="cta-button" id="labSaveBtn" style="width: 100%; padding: 12px; font-size: 12px; justify-content: center;">
+                        LOCK IN MY CAN FORMULA
+                    </button>
+                </div>
+            </div>
+
+            <!-- 5. Ice Cube Slingshot -->
+            <div class="lab-card">
+                <div>
+                    <div class="lab-card-header">
+                        <span class="lab-tag">EXPERIMENT 05</span>
+                        <span id="iceScore" style="font-family: var(--dc-font-mono); font-size: 12px; font-weight: 800; color: #40C4FF;">HITS: 0</span>
+                    </div>
+                    <h3 class="lab-title">Toss the Ice</h3>
+                    <p class="lab-desc">Pull back the crystal ice cube and slingshot it into the can for an authentic clink!</p>
+                </div>
+
+                <div class="slingshot-stage-wrap" id="slingshotStage">
+                    <div class="slingshot-target-can" id="slingshotTargetCan">CAN</div>
+                    <div class="ice-puck" id="icePuck">🧊</div>
+                </div>
+
+                <div style="text-align: center; font-size: 11px; color: var(--dc-silver-dark); margin-top: 14px; font-weight: 700;">
+                    PULL DOWN & RELEASE TO LAUNCH
+                </div>
+            </div>
+
+            <!-- 6. Carbonation Bubble Popper -->
+            <div class="lab-card">
+                <div>
+                    <div class="lab-card-header">
+                        <span class="lab-tag">EXPERIMENT 06</span>
+                        <span style="font-family: var(--dc-font-mono); font-size: 12px; font-weight: 800; color: #FF4081;">SCORE: <span id="bubbleScoreVal">0</span></span>
+                    </div>
+                    <h3 class="lab-title">Bubble Popper</h3>
+                    <p class="lab-desc">Tap or click the rising carbonation fizz bubbles before they reach the surface!</p>
+                </div>
+
+                <div class="bubble-popper-stage" id="bubblePopperStage"></div>
+
+                <div style="text-align: center; font-size: 11px; color: var(--dc-silver-dark); margin-top: 14px; font-weight: 700;">
+                    TAP BUBBLES FOR +10 POINTS
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         INTERACTIVE "BUY NOW" MODAL ORDER DRAWER
+         ===================================================================== -->
+    <div class="buy-modal-overlay" id="buyNowModal">
+        <div class="buy-modal-card">
+            <button class="buy-modal-close-btn" id="closeBuyModalBtn">&times;</button>
+            <div class="section-tag" style="margin-bottom: 8px;">COLD DELIVERY EXPRESS</div>
+            <h3 style="font-family: var(--dc-font-headline); font-size: 26px; margin: 0 0 10px 0;">ORDER ICE-COLD DIET COKE</h3>
+            <p style="font-size: 13px; color: var(--dc-silver); margin: 0 0 20px 0;">
+                Select your preferred pack chilled straight to sub-zero perfection.
+            </p>
+
+            <div class="pack-select-grid">
+                <div class="pack-option-card selected">
+                    <div class="pack-title">12-PACK CANS</div>
+                    <div class="pack-price">$8.99</div>
+                </div>
+                <div class="pack-option-card">
+                    <div class="pack-title">24-PACK FRIDGE PACK</div>
+                    <div class="pack-price">$15.99</div>
+                </div>
+                <div class="pack-option-card">
+                    <div class="pack-title">6-PACK MINI CANS</div>
+                    <div class="pack-price">$4.99</div>
+                </div>
+                <div class="pack-option-card">
+                    <div class="pack-title">48-CAN PARTY CASE</div>
+                    <div class="pack-price">$28.99</div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <label style="font-size: 11px; font-weight: 800; letter-spacing: 1px; color: var(--dc-silver);">DELIVERY POSTAL CODE</label>
+                <input type="text" class="form-input" placeholder="e.g. 90210" value="10001" style="width: 100%; padding: 12px; margin-top: 6px; font-size: 13px; border-radius: 10px; background: #16181D; border: 1px solid rgba(255,255,255,0.2); color: #FFF;">
+            </div>
+
+            <button class="inspo-pill-btn-red" id="confirmOrderBtn" style="width: 100%; justify-content: center; padding: 16px;">
+                CONFIRM CHILLED ORDER 🚀
+            </button>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         FOOTER
+         ===================================================================== -->
+    <footer class="footer" style="background: #050608; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div class="footer-inner">
+            <div class="nav-brand">
+                <span class="brand-badge">DIET COKE</span>
+                <span class="brand-title" style="font-size: 20px;">THAT'S SO DIET COKE</span>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 The Coca-Cola Company. All Rights Reserved. Interactive promotional experience and CMS.
+            </div>
+            <a href="/admin" class="nav-admin-link">ADMIN CONTROL PANEL</a>
+        </div>
+    </footer>
+
+    <!-- Scripts: Vendor and Core Modules -->
+    <script src="/js/vendor/three.min.js"></script>
+    <script src="/js/vendor/gsap.min.js"></script>
+    <script src="/js/vendor/ScrollTrigger.min.js"></script>
+    <script src="/js/audio.js"></script>
+    <script src="/js/particles.js"></script>
+    <script src="/js/can3d.js"></script>
+    <script src="/js/openCan.js"></script>
+    <script src="/js/interactions.js"></script>
+    <script src="/js/scrollTimeline.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

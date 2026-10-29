@@ -28,6 +28,8 @@ app.add_middleware(
 )
 
 FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend"))
+if not os.path.exists(os.path.join(FRONTEND_DIR, "index.html")):
+    FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
 
 # Dependency for Admin Token Validation
