@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>DIET COKE — THAT'S SO DIET COKE</title>
+    <meta name="description" content="High-impact interactive Diet Coke promotional experience. Bold taste. Zero sugar. Maximum refreshment.">
+    <link rel="icon" type="image/png" href="/assets/can_reference.jpg">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Carbonation & Fizz Particles Canvas -->
+    <canvas id="fizzCanvas"></canvas>
+
+    <!-- Three.js 3D Aluminum Can Stage -->
+    <div id="threeCanContainer"></div>
+
+    <!-- Full-Screen Red Liquid Transition Overlay (Scene 7) -->
+    <div class="red-transition-overlay" id="redTransitionOverlay">
+        <div class="transition-text">DIET COKE.</div>
+    </div>
+
+    <!-- Floating Glassmorphic Navbar -->
+    <header class="floating-navbar" id="mainNav">
+        <a href="#hero" class="nav-brand">
+            <span class="brand-badge">EST. 1982</span>
+            <span class="brand-title">Diet Coke</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#experience">EXPERIENCE</a></li>
+            <li><a href="#flavors">FLAVORS</a></li>
+            <li><a href="#canOpener">CAN OPENER</a></li>
+            <li><a href="#labs">EXPERIMENTS</a></li>
+            <li><a href="#products">PRODUCTS</a></li>
+            <li><a href="#story">STORY</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <button class="sound-toggle-btn" id="soundToggleBtn" aria-label="Toggle Sound">
+                <span class="sound-icon-wave"></span>
+                <span class="sound-label">SOUND OFF</span>
+            </button>
+            <a href="/admin" class="nav-admin-link">ADMIN CMS</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Navigation Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <a href="#hero" class="mobile-nav-link">HOME</a>
+        <a href="#experience" class="mobile-nav-link">EXPERIENCE</a>
+        <a href="#flavors" class="mobile-nav-link">FLAVORS</a>
+        <a href="#canOpener" class="mobile-nav-link">CAN OPENER</a>
+        <a href="#labs" class="mobile-nav-link">EXPERIMENTS</a>
+        <a href="#products" class="mobile-nav-link">PRODUCTS</a>
+        <a href="#story" class="mobile-nav-link">STORY</a>
+        <a href="/admin" class="mobile-nav-link" style="color:var(--dc-red); font-size:24px;">ADMIN DASHBOARD</a>
+    </div>
+
+    <!-- Global Announcement Ticker -->
+    <div class="announcement-ticker-wrap">
+        <div class="ticker-track">
+            <span class="ticker-content" id="announcementTicker">/// LIVE CAN EXPERIENCE /// ZERO SUGAR /// UNAPOLOGETICALLY CRISP /// 100% RECYCLABLE ALUMINUM /// THAT'S SO DIET COKE ///</span>
+            <span class="ticker-content">/// LIVE CAN EXPERIENCE /// ZERO SUGAR /// UNAPOLOGETICALLY CRISP /// 100% RECYCLABLE ALUMINUM /// THAT'S SO DIET COKE ///</span>
+        </div>
+    </div>
+
+    <!-- HERO SECTION (First 5 seconds crazy) -->
+    <section class="hero-section" id="hero">
+        <div class="hero-glow-backdrop"></div>
+        <div class="hero-content">
+            <div class="hero-badge-tag">
+                <span class="hero-badge-dot"></span>
+                <span>UNAPOLOGETIC REFRESHMENT</span>
+            </div>
+
+            <h1 class="hero-headline">
+                <span class="hero-headline-word" id="heroWord1">THAT'S</span>
+                <span class="hero-headline-word" id="heroWord2">SO</span>
+                <span class="hero-headline-word accent-red" id="heroWord3">DIET COKE.</span>
+            </h1>
+
+            <p class="hero-subheadline" id="heroSubheadline">
+                Bold taste. Zero sugar. Maximum refreshment.
+            </p>
+
+            <div class="hero-cta-group">
+                <a href="#flavors" class="cta-button" id="heroCtaBtn">EXPLORE THE TASTE</a>
+                <a href="#canOpener" class="cta-secondary-btn">CRACK A CAN</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCENE 4 & 5: EXPERIENCE & KINEMATICS SECTION -->
+    <section class="experience-section" id="experience">
+        <div class="section-tag">PRECISION CRAFTSMANSHIP</div>
+        <h2 class="section-giant-title">ENGINEERED FOR THE UNCOMPROMISING.</h2>
+
+        <div class="experience-grid">
+            <div class="scene-callout">
+                <div class="callout-number">01</div>
+                <h3 class="callout-title">0 Sugar / 0 Calories</h3>
+                <p class="callout-desc">Zero guilt. Pure unadulterated silver thrill perfected since 1982.</p>
+            </div>
+
+            <div class="scene-callout">
+                <div class="callout-number">02</div>
+                <h3 class="callout-title">Aggressive Carbonation</h3>
+                <p class="callout-desc">High-pressure micro-bubbles engineered to detonate on contact with your palate.</p>
+            </div>
+
+            <div class="scene-callout">
+                <div class="callout-number">03</div>
+                <h3 class="callout-title">100% Recyclable Aluminum</h3>
+                <p class="callout-desc">Infinitely recyclable cans chilled to sub-zero crispness.</p>
+            </div>
+
+            <div class="scene-callout">
+                <div class="callout-number">04</div>
+                <h3 class="callout-title">Signature Spiced Bite</h3>
+                <p class="callout-desc">The secret botanical blend delivering that crisp, legendary throat kick.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCENE 7 LIQUID TRIGGER -->
+    <div id="transitionTrigger" style="height: 60px;"></div>
+
+    <!-- FLAVOR SELECTOR SECTION (Section 4) -->
+    <section class="flavor-section" id="flavors">
+        <div class="flavor-backdrop" id="flavorBackdrop"></div>
+
+        <div class="flavor-container">
+            <div class="section-tag">DISCOVER THE LINEUP</div>
+            <h2 class="section-giant-title" style="text-align: center;">WHAT'S YOUR FLAVOR?</h2>
+
+            <!-- Interactive Flavor Buttons -->
+            <div class="flavor-nav-row" id="flavorButtonsList">
+                <!-- Dynamically generated from API / products -->
+            </div>
+
+            <!-- Active Flavor Display Card -->
+            <div class="flavor-display-card" id="activeFlavorDisplay">
+                <span class="flavor-badge" id="activeFlavorBadge">ICONIC ORIGINAL</span>
+                <h3 class="flavor-title" id="activeFlavorTitle">Diet Coke Original</h3>
+                <p class="flavor-tagline" id="activeFlavorTagline">The Unapologetic Classic</p>
+                <p class="flavor-desc" id="activeFlavorDesc">
+                    Crisp, cold, and unmistakably bold. The timeless silver aluminum icon crafted with zero sugar, zero calories, and maximum effervescence.
+                </p>
+
+                <div class="flavor-specs-row" id="activeFlavorSpecs">
+                    <!-- Hydrated dynamically -->
+                </div>
+
+                <div class="taste-notes-wrap" id="activeFlavorNotes">
+                    <!-- Hydrated dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE FIZZ SECTION (Section 10) -->
+    <section class="fizz-section" id="fizz">
+        <div class="section-tag">MOLECULAR EFFERVESCENCE</div>
+        <h2 class="fizz-headline" id="fizzHeadline">TASTE THE FIZZ.</h2>
+        <p class="fizz-subheadline" id="fizzSubheadline">
+            Millions of microscopic carbonation micro-bubbles suspended in ice-cold silver aluminum. Every sip cracks open an adrenaline rush.
+        </p>
+        <a href="#canOpener" class="cta-button">POP THE SEAL</a>
+    </section>
+
+    <!-- SECTION 7: INTERACTIVE "PULL TO OPEN" CAN -->
+    <section class="can-opener-section" id="canOpener">
+        <div class="section-tag">PHYSICAL INTERACTION</div>
+        <h2 class="section-giant-title" style="margin-bottom: 24px;">CRACK OPEN THE CHILL</h2>
+
+        <div class="opener-stage" id="canOpenerStage">
+            <div class="opener-fizz-spray" id="openerSpray"></div>
+
+            <div class="opener-status" id="openerStatus">PULL TO OPEN</div>
+
+            <!-- Realistic Can Lid Mockup -->
+            <div class="opener-lid-mockup">
+                <div class="opener-seal" id="openerSeal"></div>
+                <div class="opener-tab" id="openerTab">
+                    <div class="tab-rivet"></div>
+                    <div class="tab-hole"></div>
+                </div>
+            </div>
+
+            <p class="opener-instruction" id="openerInstruction">
+                Drag the tab upward or pull with your finger
+            </p>
+
+            <button class="opener-reset-btn" id="openerResetBtn">
+                CRACK ANOTHER CAN
+            </button>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE EXPERIENTIAL LABS: 5 FUN INTERACTIONS -->
+    <section class="interactive-labs-section" id="labs">
+        <div style="text-align: center;">
+            <div class="section-tag">PHYSICAL & DIGITAL PLAYGROUND</div>
+            <h2 class="section-giant-title" style="margin: 0 auto 16px;">THE FIZZ EXPERIMENTS</h2>
+            <p style="color: var(--dc-silver); max-width: 600px; margin: 0 auto;">
+                5 tactile ways to shake, clink, wipe, remix, and make beats with cold Diet Coke silver.
+            </p>
+        </div>
+
+        <div class="interactive-labs-grid">
+            <!-- 1. The Pressure Shaker -->
+            <div class="lab-card">
+                <div>
+                    <div class="lab-card-header">
+                        <span class="lab-tag">EXPERIMENT 01</span>
+                        <span id="shakerPsiValue" style="font-family: var(--dc-font-mono); font-size: 13px; font-weight: 800;">0 PSI</span>
+                    </div>
+                    <h3 class="lab-title">Shake to Detonate</h3>
+                    <p class="lab-desc">Tap rapidly or shake your phone to build up high-velocity carbonation pressure.</p>
+                </div>
+
+                <div class="shaker-stage">
+                    <div class="shaker-spray" id="shakerSpray"></div>
+                    <div class="shaker-can-mockup" id="shakerCanMockup">DIET COKE</div>
+                </div>
+
+                <div>
+                    <div class="shaker-pressure-bar-track">
+                        <div class="shaker-pressure-bar-fill" id="shakerPsiFill"></div>
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 14px;">
+                        <button class="cta-button" id="shakerTriggerBtn" style="flex: 1; padding: 12px; font-size: 12px; justify-content: center;">
+                            ⚡ SHAKE CAN
+                        </button>
+                        <button class="cta-secondary-btn" id="shakerReleaseBtn" style="display: none; padding: 12px; font-size: 12px; background: #FF1A46; color: #FFF; border-color: #FF1A46; justify-content: center;">
+                            💥 GEYSER!
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Commercial Beatpad -->
+            <div class="lab-card">
+                <div>
+                    <div class="lab-card-header">
+                        <span class="lab-tag">EXPERIMENT 02</span>
+                        <span style="font-size: 11px; font-weight: 700; color: var(--dc-silver-dark);">4-PAD SYNTH</span>
+                    </div>
+                    <h3 class="lab-title">Commercial Beatpad</h3>
+                    <p class="lab-desc">Jam on authentic Diet Coke audio cues and make your own beverage commercial beat.</p>
+                </div>
+
+                <div class="beatpad-grid">
+                    <button class="beatpad-key" data-pad="0">
+                        <span class="pad-icon">💥</span>
+                        <span>CAN POP</span>
+                    </button>
+                    <button class="beatpad-key" data-pad="1">
+                        <span class="pad-icon">🧊</span>
+                        <span>ICE CLINK</span>
+                    </button>
+                    <button class="beatpad-key" data-pad="2">
+                        <span class="pad-icon">💨</span>
+                        <span>FIZZ BLAST</span>
+                    </button>
+                    <button class="beatpad-key" data-pad="3">
+                        <span class="pad-icon">🔔</span>
+                        <span>RIM TAP</span>
+                    </button>
+                </div>
+
+                <div class="beatpad-eq">
+                    <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+                    <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+                    <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+                </div>
+            </div>
+
+            <!-- 3. Condensation Frost Wiper -->
+            <div class="lab-card">
+                <div>
+                    <div class="lab-card-header">
+                        <span class="lab-tag">EXPERIMENT 03</span>
+                        <span id="frostCounter" style="font-family: var(--dc-font-mono); font-size: 12px; font-weight: 800; color: #00E676;">0% CLEARED</span>
+                    </div>
+                    <h3 class="lab-title">Scratch the Frost</h3>
+                    <p class="lab-desc">Drag your finger or cursor to scrape off the sub-zero frost and reveal the cold aluminum can.</p>
+                </div>
+
+                <div class="frost-stage-wrap">
+                    <div class="frost-background-content">
+                        <span style="font-family: var(--dc-font-headline); font-size: 24px; color: var(--dc-red); letter-spacing: 2px;">THAT'S SO DIET COKE</span>
+                        <span style="font-size: 11px; letter-spacing: 2px; color: #FFF; font-weight: 800; margin-top: 4px;">SUB-ZERO ALUMINUM CHILL</span>
+                    </div>
+                    <canvas id="frostCanvas"></canvas>
+                </div>
+
+                <button class="carousel-select-btn" id="frostResetBtn" style="width: 100%; border-color: rgba(255,255,255,0.2);">
+                    RE-FREEZE GLASS
+                </button>
+            </div>
+
+            <!-- 4. Custom Flavor Lab -->
+            <div class="lab-card">
+                <div>
+                    <div class="lab-card-header">
+                        <span class="lab-tag">EXPERIMENT 04</span>
+                        <span style="font-size: 11px; font-weight: 700; color: var(--dc-silver-dark);">STUDIO LAB</span>
+                    </div>
+                    <h3 class="lab-title">Custom Flavor Lab</h3>
+                    <p class="lab-desc">Mix your own bespoke Diet Coke edition with custom colors and names.</p>
+                </div>
+
+                <div class="lab-preview-can-wrap">
+                    <div class="lab-preview-can" id="labCanPreview">
+                        <span class="lab-can-badge" id="labBadgePreview">SILVER</span>
+                        <span class="lab-can-name" id="labNamePreview">YOUR EDITION</span>
+                        <span style="font-size: 8px; color: rgba(255,255,255,0.7);">0 SUGAR</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="lab-controls-grid">
+                        <select class="lab-select" id="labBase">
+                            <option value="silver">Brushed Silver</option>
+                            <option value="obsidian">Carbon Obsidian</option>
+                        </select>
+                        <select class="lab-select" id="labInfusion">
+                            <option value="#E4002B">Classic Red</option>
+                            <option value="#FF4081">Electric Berry</option>
+                            <option value="#00E676">Sublime Lime</option>
+                            <option value="#FF9100">Blood Orange</option>
+                        </select>
+                    </div>
+                    <input type="text" id="labNameInput" class="form-input" placeholder="Name your edition..." style="margin-bottom: 12px; padding: 10px; font-size: 12px;" value="MY DIET COKE">
+                    <button class="cta-button" id="labSaveBtn" style="width: 100%; padding: 12px; font-size: 12px; justify-content: center;">
+                        LOCK IN MY CAN FORMULA
+                    </button>
+                </div>
+            </div>
+
+            <!-- 5. Ice Cube Slingshot -->
+            <div class="lab-card">
+                <div>
+                    <div class="lab-card-header">
+                        <span class="lab-tag">EXPERIMENT 05</span>
+                        <span id="iceScore" style="font-family: var(--dc-font-mono); font-size: 12px; font-weight: 800; color: #40C4FF;">HITS: 0</span>
+                    </div>
+                    <h3 class="lab-title">Toss the Ice</h3>
+                    <p class="lab-desc">Pull back the crystal ice cube and slingshot it into the can for an authentic clink!</p>
+                </div>
+
+                <div class="slingshot-stage-wrap" id="slingshotStage">
+                    <div class="slingshot-target-can" id="slingshotTargetCan">CAN</div>
+                    <div class="ice-puck" id="icePuck">🧊</div>
+                </div>
+
+                <div style="text-align: center; font-size: 11px; color: var(--dc-silver-dark); margin-top: 14px; font-weight: 700;">
+                    PULL DOWN & RELEASE TO LAUNCH
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: PRODUCT CAROUSEL -->
+    <section class="carousel-section" id="products">
+        <div class="carousel-header">
+            <div>
+                <div class="section-tag">THE REPERTOIRE</div>
+                <h2 class="section-giant-title" style="margin-bottom: 0;">ALL PRODUCTS</h2>
+            </div>
+
+            <div class="carousel-counter-wrap">
+                <span class="carousel-counter-current" id="carouselCounterCurrent">01</span>
+                <span class="carousel-counter-divider">/</span>
+                <span class="carousel-counter-total" id="carouselCounterTotal">04</span>
+                <div class="carousel-progress-track">
+                    <div class="carousel-progress-bar" id="carouselProgressBar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-stage">
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Dynamically populated from API -->
+            </div>
+        </div>
+
+        <div class="carousel-controls">
+            <button class="carousel-nav-btn" id="carouselPrev" aria-label="Previous Product">&#8592;</button>
+            <button class="carousel-nav-btn" id="carouselNext" aria-label="Next Product">&#8594;</button>
+        </div>
+    </section>
+
+    <!-- BRAND STORY & HERITAGE SECTION -->
+    <section class="story-section" id="story">
+        <div class="story-left">
+            <div class="section-tag">LEGACY OF AUDACITY</div>
+            <h2 id="storyHeading">BORN IN 1982. REBORN EVERY SECOND.</h2>
+            <p id="storyBody">
+                Diet Coke isn't an alternative. It is an obsession. A relentless pursuit of ice-cold silver perfection, unapologetic individuality, and unmatched crisp bite. No compromises. Zero sugar. All attitude.
+            </p>
+        </div>
+
+        <div class="story-stats-grid">
+            <div class="story-stat-card">
+                <div class="story-stat-num" id="statSugar">0g</div>
+                <div class="story-stat-label">Zero Sugar</div>
+            </div>
+            <div class="story-stat-card">
+                <div class="story-stat-num" id="statCalories">0</div>
+                <div class="story-stat-label">Zero Calories</div>
+            </div>
+            <div class="story-stat-card">
+                <div class="story-stat-num" id="statRefresh">100%</div>
+                <div class="story-stat-label">Crisp Silver Kick</div>
+            </div>
+            <div class="story-stat-card">
+                <div class="story-stat-num" id="statYear">1982</div>
+                <div class="story-stat-label">Iconic Heritage</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Counter-Direction Marquee Ticker -->
+    <div class="announcement-ticker-wrap" style="margin-top: 0; background: #08090b; border-top: 1px solid rgba(228, 0, 43, 0.3);">
+        <div class="ticker-track reverse">
+            <span class="ticker-content" style="color: var(--dc-red);">/// THAT'S SO DIET COKE /// ZERO SUGAR /// UNAPOLOGETICALLY CRISP /// PURE SILVER OBSESSION /// COLD AS GLACIAL ICE ///</span>
+            <span class="ticker-content" style="color: var(--dc-red);">/// THAT'S SO DIET COKE /// ZERO SUGAR /// UNAPOLOGETICALLY CRISP /// PURE SILVER OBSESSION /// COLD AS GLACIAL ICE ///</span>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="nav-brand">
+                <span class="brand-badge">DIET COKE</span>
+                <span class="brand-title" style="font-size: 20px;">THAT'S SO DIET COKE</span>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 The Coca-Cola Company. All Rights Reserved. Interactive promotional experience and CMS.
+            </div>
+            <a href="/admin" class="nav-admin-link">ADMIN CONTROL PANEL</a>
+        </div>
+    </footer>
+
+    <!-- Scripts: Vendor and Core Modules -->
+    <script src="/js/vendor/three.min.js"></script>
+    <script src="/js/vendor/gsap.min.js"></script>
+    <script src="/js/vendor/ScrollTrigger.min.js"></script>
+    <script src="/js/audio.js"></script>
+    <script src="/js/particles.js"></script>
+    <script src="/js/can3d.js"></script>
+    <script src="/js/openCan.js"></script>
+    <script src="/js/flavorSelector.js"></script>
+    <script src="/js/carousel.js"></script>
+    <script src="/js/interactions.js"></script>
+    <script src="/js/scrollTimeline.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Standalone tunnel binaries
+cloudflared.exe
+*.exe
+
+# Database lock files
+*.db-journal
+
+# Environments
+env/
+venv/
+.venv/
+
+# OS Generated
+.DS_Store
+Thumbs.db
+*.log

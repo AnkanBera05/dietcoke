@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIET COKE — Admin Control Center</title>
+    <link rel="icon" type="image/png" href="/assets/can_reference.jpg">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+    <!-- AUTHENTICATION LOGIN OVERLAY -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-card">
+            <span class="login-logo-badge">DIET COKE CMS</span>
+            <h1 class="login-title">Brand Control Center</h1>
+            <p class="login-subtitle">Sign in to manage flavors, products, copy, and real-time campaign telemetry.</p>
+
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Admin Username</label>
+                    <input type="text" id="loginUsername" class="form-input" value="admin" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-input" value="dietcoke2026!" required>
+                </div>
+
+                <button type="submit" class="btn-primary">AUTHENTICATE & ENTER</button>
+                <div id="loginError" class="error-text"></div>
+            </form>
+            <div style="margin-top: 24px; font-size: 11px; color: var(--adm-text-muted);">
+                Default credentials prefilled for review: <code>admin</code> / <code>dietcoke2026!</code>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN ADMIN DASHBOARD INTERFACE -->
+    <div class="dashboard-layout" id="dashboardMain" style="display: none;">
+
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <div>
+                <div class="sidebar-header">
+                    <span class="login-logo-badge" style="margin: 0;">ADMIN</span>
+                    <span style="font-weight: 800; letter-spacing: 1px; font-size: 14px;">DIET COKE CMS</span>
+                </div>
+
+                <ul class="admin-nav-list">
+                    <li>
+                        <button class="admin-nav-tab active" data-tab="products">
+                            <span>📦</span> Products & Flavors
+                        </button>
+                    </li>
+                    <li>
+                        <button class="admin-nav-tab" data-tab="content">
+                            <span>✍️</span> Site Copy & Hero
+                        </button>
+                    </li>
+                    <li>
+                        <button class="admin-nav-tab" data-tab="analytics">
+                            <span>📊</span> Live Telemetry
+                        </button>
+                    </li>
+                    <li>
+                        <button class="admin-nav-tab" data-tab="settings">
+                            <span>⚙️</span> Security & Defaults
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-bottom">
+                <a href="/" target="_blank" class="sidebar-link">
+                    ↗ View Live Website
+                </a>
+                <button id="adminLogoutBtn" class="action-btn delete-btn" style="width: 100%; padding: 10px;">
+                    Log Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="admin-content-area">
+
+            <!-- TAB 1: PRODUCTS & FLAVORS -->
+            <section class="admin-tab-pane active" id="tab-products">
+                <div class="pane-header">
+                    <div>
+                        <h2 class="pane-title">Flavors & Products Catalog</h2>
+                        <p class="pane-subtitle">Manage all active Diet Coke can variants, color palettes, and taste profiles.</p>
+                    </div>
+                    <button class="btn-primary" id="openAddProductBtn" style="width: auto; padding: 12px 24px; margin: 0;">
+                        + ADD NEW FLAVOR
+                    </button>
+                </div>
+
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Product / Slug</th>
+                                <th>Badge</th>
+                                <th>Nutrition</th>
+                                <th>Order</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- TAB 2: SITE COPY & CONTENT -->
+            <section class="admin-tab-pane" id="tab-content">
+                <div class="pane-header">
+                    <div>
+                        <h2 class="pane-title">Site Copy & Campaign Headlines</h2>
+                        <p class="pane-subtitle">Update hero text, announcements, and narrative copy live across the website.</p>
+                    </div>
+                </div>
+
+                <form id="siteContentForm">
+                    <div class="admin-card">
+                        <h3 class="admin-card-title">Hero Section Kinematics</h3>
+                        <p class="admin-card-desc">The 3 distinct words split and float apart during scroll.</p>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+                            <div class="form-group" style="margin: 0;">
+                                <label>Word 1</label>
+                                <input type="text" name="hero_headline_1" id="content_hero_headline_1" class="form-input">
+                            </div>
+                            <div class="form-group" style="margin: 0;">
+                                <label>Word 2</label>
+                                <input type="text" name="hero_headline_2" id="content_hero_headline_2" class="form-input">
+                            </div>
+                            <div class="form-group" style="margin: 0;">
+                                <label>Word 3 (Accent Red)</label>
+                                <input type="text" name="hero_headline_3" id="content_hero_headline_3" class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label>Hero Subheadline</label>
+                                <input type="text" name="hero_subheadline" id="content_hero_subheadline" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Hero Primary CTA</label>
+                                <input type="text" name="hero_cta" id="content_hero_cta" class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Announcement Bar Ticker</label>
+                            <input type="text" name="ticker_announcement" id="content_ticker_announcement" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <h3 class="admin-card-title">Interactive "Pull to Open" Experience</h3>
+                        <p class="admin-card-desc">Messages presented before and after the visitor pops the can seal.</p>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label>Pre-Open Prompt</label>
+                                <input type="text" name="can_opener_headline" id="content_can_opener_headline" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Post-Open Celebratory Slogan</label>
+                                <input type="text" name="can_opener_success" id="content_can_opener_success" class="form-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <h3 class="admin-card-title">The Fizz & Molecular Carbonation</h3>
+                        <div class="form-group">
+                            <label>Fizz Section Headline</label>
+                            <input type="text" name="fizz_headline" id="content_fizz_headline" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Fizz Subheadline</label>
+                            <textarea name="fizz_subheadline" id="content_fizz_subheadline" class="form-textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <h3 class="admin-card-title">Brand Story & Heritage</h3>
+                        <div class="form-group">
+                            <label>Story Heading</label>
+                            <input type="text" name="story_heading" id="content_story_heading" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Story Body Narrative</label>
+                            <textarea name="story_body" id="content_story_body" class="form-textarea"></textarea>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label>Stat 1 (Sugar)</label>
+                                <input type="text" name="stat_sugar" id="content_stat_sugar" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Stat 2 (Calories)</label>
+                                <input type="text" name="stat_calories" id="content_stat_calories" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Stat 3 (Refreshment Rate)</label>
+                                <input type="text" name="stat_refreshment" id="content_stat_refreshment" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Stat 4 (Heritage Year)</label>
+                                <input type="text" name="stat_year" id="content_stat_year" class="form-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="margin-bottom: 40px;">
+                        SAVE ALL CHANGES & PUBLISH LIVE
+                    </button>
+                </form>
+            </section>
+
+            <!-- TAB 3: LIVE TELEMETRY & ANALYTICS -->
+            <section class="admin-tab-pane" id="tab-analytics">
+                <div class="pane-header">
+                    <div>
+                        <h2 class="pane-title">Live Engagement Telemetry</h2>
+                        <p class="pane-subtitle">Real-time metrics on user interactions, tab-pulls, sound toggles, and flavor views.</p>
+                    </div>
+                    <button class="action-btn" id="refreshAnalyticsBtn" style="padding: 10px 18px;">
+                        🔄 Refresh Metrics
+                    </button>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Total Unique Visits</div>
+                        <div class="metric-value" id="metricVisits">1,842</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Can Pops (Tab Pulls)</div>
+                        <div class="metric-value highlight" id="metricCanPops">624</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Sound Unmutes</div>
+                        <div class="metric-value" id="metricSound">412</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Can Opener Engagement</div>
+                        <div class="metric-value" id="metricEngagement">33.9%</div>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <h3 class="admin-card-title">Flavor Popularity Distribution</h3>
+                    <p class="admin-card-desc">Real-time breakdown of user selections across flavors.</p>
+                    <div id="flavorPopularityChart">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: SECURITY & DEFAULTS -->
+            <section class="admin-tab-pane" id="tab-settings">
+                <div class="pane-header">
+                    <div>
+                        <h2 class="pane-title">Security & System Settings</h2>
+                        <p class="pane-subtitle">Manage administrative credentials and restore authentic brand defaults.</p>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <h3 class="admin-card-title">Change Admin Password</h3>
+                    <form id="changePasswordForm">
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label>Current Password</label>
+                                <input type="password" id="curPassword" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label>New Password</label>
+                                <input type="password" id="newPassword" class="form-input" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: auto; padding: 12px 28px;">
+                            UPDATE PASSWORD
+                        </button>
+                    </form>
+                </div>
+
+                <div class="admin-card" style="border-color: rgba(228, 0, 43, 0.4);">
+                    <h3 class="admin-card-title" style="color: #FF5252;">Danger Zone: Reset Brand Defaults</h3>
+                    <p class="admin-card-desc">
+                        Restores all site copy, headlines, and products back to the authentic Coca-Cola brand guidelines.
+                    </p>
+                    <button id="resetDefaultsBtn" class="action-btn delete-btn" style="padding: 12px 24px; font-weight: 800;">
+                        RESTORE BRAND DEFAULTS
+                    </button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- PRODUCT ADD / EDIT MODAL -->
+    <div class="admin-modal-overlay" id="productModal">
+        <div class="admin-modal-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <h3 id="productModalTitle" style="font-size: 22px; font-weight: 800;">Add New Flavor / Product</h3>
+                <button id="closeProductModalBtn" class="action-btn" style="border: none; font-size: 18px;">✕</button>
+            </div>
+
+            <form id="productForm">
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label>Flavor Name</label>
+                        <input type="text" id="prodName" class="form-input" placeholder="e.g. Diet Coke Feisty Cherry" required>
+                    </div>
+                    <div class="form-group">
+                        <label>URL Slug</label>
+                        <input type="text" id="prodSlug" class="form-input" placeholder="e.g. cherry" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Tagline</label>
+                    <input type="text" id="prodTagline" class="form-input" placeholder="e.g. A Bold Splash of Dark Cherry">
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label>Accent Primary Color</label>
+                        <input type="color" id="prodAccentColor" class="form-input" style="height: 48px; padding: 4px; cursor: pointer;">
+                    </div>
+                    <div class="form-group">
+                        <label>Accent Secondary Color</label>
+                        <input type="color" id="prodSecondaryColor" class="form-input" style="height: 48px; padding: 4px; cursor: pointer;">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label>Badge Label</label>
+                        <input type="text" id="prodBadge" class="form-input" placeholder="e.g. FAN FAVORITE">
+                    </div>
+                    <div class="form-group">
+                        <label>Sort Order</label>
+                        <input type="number" id="prodSortOrder" class="form-input" value="1">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label>Calories</label>
+                        <input type="number" id="prodCalories" class="form-input" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Sugar</label>
+                        <input type="text" id="prodSugar" class="form-input" value="0g">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label>Caffeine</label>
+                        <input type="text" id="prodCaffeine" class="form-input" value="46mg">
+                    </div>
+                    <div class="form-group">
+                        <label>Volume</label>
+                        <input type="text" id="prodVolume" class="form-input" value="355 mL / 12 FL OZ">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="prodDesc" class="form-textarea" placeholder="Detailed flavor profile description..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Taste Profile Tags (Comma Separated)</label>
+                    <input type="text" id="prodTasteNotes" class="form-input" placeholder="e.g. Crisp Carbonation, Zero Sugar, Cold Snap">
+                </div>
+
+                <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+                    <input type="checkbox" id="prodIsActive" checked style="width: 18px; height: 18px;">
+                    <label for="prodIsActive" style="margin: 0; cursor: pointer;">Active & Visible on Public Site</label>
+                </div>
+
+                <button type="submit" class="btn-primary" style="margin-top: 24px;">SAVE PRODUCT</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>
