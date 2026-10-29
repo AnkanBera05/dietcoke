@@ -127,10 +127,12 @@ class DietCoke3DExperience {
     loadTextures(callback) {
         const textureLoader = new THREE.TextureLoader();
         const texturePaths = {
+            classic: '/assets/textures/can_label_classic.png',
             original: '/assets/textures/can_label_original.png',
             cherry: '/assets/textures/can_label_cherry.png',
             lime: '/assets/textures/can_label_lime.png',
             vanilla: '/assets/textures/can_label_vanilla.png',
+            raspberry: '/assets/textures/can_label_raspberry.png',
             normalDroplets: '/assets/textures/can_normal_droplets.png',
             lid: '/assets/textures/can_lid.png'
         };

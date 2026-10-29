@@ -1838,3 +1838,802 @@ body {
     cursor: grabbing;
 }
 
+
+
+/* =========================================================================
+   10-SECTION INSPIRATION REMAKE STYLES (01/10 to 10/10)
+   Matches media_1793247713462_b20b2142.jpg exactly
+========================================================================= */
+
+/* Base Inspo Section Architecture */
+.inspo-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 110px 5vw 80px;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.inspo-container {
+    width: 100%;
+    max-width: 1380px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    align-items: center;
+    gap: 48px;
+    position: relative;
+    z-index: 5;
+}
+
+.inspo-container.full-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.inspo-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 6;
+}
+
+.inspo-content.center-text {
+    align-items: center;
+    text-align: center;
+}
+
+/* Typography matching the inspo */
+.inspo-headline {
+    font-family: var(--dc-font-headline);
+    font-size: clamp(44px, 5.8vw, 84px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0 0 22px 0;
+}
+
+.inspo-headline .hl-line {
+    display: block;
+}
+
+.inspo-headline.text-dark {
+    color: #111418;
+}
+
+.inspo-headline .accent-red {
+    color: var(--dc-red);
+    text-shadow: 0 0 35px rgba(228, 0, 43, 0.45);
+}
+
+.inspo-subheadline {
+    font-size: clamp(15px, 1.35vw, 20px);
+    line-height: 1.5;
+    color: #C5CBD2;
+    max-width: 520px;
+    margin: 0 0 36px 0;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+.inspo-subheadline.text-dark {
+    color: #4A5568;
+}
+
+/* Buttons matching the inspo cards */
+.inspo-pill-btn-white {
+    background: #FFFFFF;
+    color: #111418;
+    padding: 16px 36px;
+    border-radius: 999px;
+    font-family: var(--dc-font-headline);
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.25);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s;
+}
+
+.inspo-pill-btn-white:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 16px 40px rgba(255, 255, 255, 0.38);
+}
+
+.inspo-pill-btn-fizz {
+    background: rgba(18, 18, 20, 0.85);
+    color: #FFFFFF;
+    border: 2px solid rgba(228, 0, 43, 0.6);
+    padding: 16px 36px;
+    border-radius: 999px;
+    font-family: var(--dc-font-headline);
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(228, 0, 43, 0.3);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.inspo-pill-btn-fizz:hover {
+    transform: translateY(-3px) scale(1.03);
+    border-color: var(--dc-red);
+    box-shadow: 0 16px 45px rgba(228, 0, 43, 0.55);
+}
+
+.inspo-pill-btn-fizz .play-triangle {
+    color: var(--dc-red);
+    font-size: 14px;
+}
+
+.inspo-pill-btn-red {
+    background: var(--dc-red);
+    color: #FFFFFF;
+    padding: 18px 44px;
+    border-radius: 999px;
+    font-family: var(--dc-font-headline);
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 12px 45px rgba(228, 0, 43, 0.5);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s;
+}
+
+.inspo-pill-btn-red:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 18px 55px rgba(228, 0, 43, 0.7);
+}
+
+/* Corner Section Counter Tag (e.g. 01 / 10, 02 / 10) */
+.inspo-section-counter {
+    position: absolute;
+    bottom: 30px;
+    right: 48px;
+    font-family: var(--dc-font-mono);
+    font-size: 13px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 3px;
+    z-index: 10;
+    user-select: none;
+}
+
+.inspo-section-counter.text-dark {
+    color: rgba(0, 0, 0, 0.45);
+}
+
+/* Visual Stage and Images */
+.inspo-visual-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 520px;
+}
+
+.inspo-visual-img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.75));
+    border-radius: 20px;
+    transition: transform 0.4s ease;
+}
+
+.inspo-visual-img.floating {
+    animation: canInspoHover 5s ease-in-out infinite;
+}
+
+@keyframes canInspoHover {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-16px) rotate(1.2deg); }
+}
+
+/* Section Specific Backdrops */
+.inspo-sec-01 {
+    background: radial-gradient(circle at 75% 50%, rgba(200, 225, 255, 0.08) 0%, #060709 75%);
+}
+
+.inspo-sec-02 {
+    background: radial-gradient(circle at 70% 50%, rgba(220, 80, 20, 0.24) 0%, #080706 75%);
+}
+
+.inspo-sec-03 {
+    background: #090B0E;
+}
+
+.inspo-sec-04 {
+    background: radial-gradient(circle at 60% 50%, rgba(255, 255, 255, 0.06) 0%, #08090C 80%);
+}
+
+.inspo-sec-05 {
+    background: radial-gradient(circle at 70% 45%, rgba(255, 120, 40, 0.28) 0%, #0C0806 80%);
+}
+
+.inspo-sec-06 {
+    background: radial-gradient(circle at 70% 55%, rgba(0, 180, 255, 0.12) 0%, #08070C 80%);
+}
+
+.inspo-sec-07 {
+    background: #F8F9FA;
+    color: #111418;
+}
+
+.inspo-sec-08 {
+    background: radial-gradient(circle at 70% 50%, rgba(20, 120, 60, 0.25) 0%, #050B07 80%);
+}
+
+.inspo-sec-09 {
+    background: #F3F5F8;
+    color: #111418;
+}
+
+.inspo-sec-10 {
+    background: #F8FAFC;
+    color: #111418;
+}
+
+/* SECTION 03: THE RED ALCOVE VAULT */
+.alcove-vault {
+    position: relative;
+    width: 100%;
+    max-width: 1140px;
+    height: 480px;
+    margin: 40px auto 0;
+    border-radius: 40px 40px 24px 24px;
+    background: radial-gradient(circle at 50% 80%, #C40026 0%, #700012 55%, #1C0005 100%);
+    border: 2px solid rgba(255, 80, 100, 0.35);
+    box-shadow: 0 35px 120px rgba(228, 0, 43, 0.45), inset 0 2px 25px rgba(255, 255, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+}
+
+.alcove-cans-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 36px;
+    width: 100%;
+    padding-bottom: 40px;
+    position: relative;
+    z-index: 5;
+}
+
+.alcove-can-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.35s;
+    width: 120px;
+}
+
+.alcove-can-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.65));
+    transition: transform 0.35s;
+}
+
+.alcove-can-item:hover {
+    transform: translateY(-16px) scale(1.08);
+}
+
+.alcove-can-item.active {
+    transform: translateY(-24px) scale(1.15);
+}
+
+.alcove-can-label {
+    font-family: var(--dc-font-headline);
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+    margin-top: 14px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.alcove-nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+    z-index: 10;
+}
+
+.alcove-nav-arrow:hover {
+    background: var(--dc-red);
+    border-color: var(--dc-red);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.alcove-nav-arrow.prev { left: 24px; }
+.alcove-nav-arrow.next { right: 24px; }
+
+.alcove-floor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(0, 0, 0, 0.85) 100%);
+    pointer-events: none;
+}
+
+.alcove-active-name {
+    font-family: var(--dc-font-headline);
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--dc-red);
+    margin-top: 24px;
+    text-transform: uppercase;
+}
+
+.alcove-active-desc {
+    font-size: 15px;
+    color: #C5CBD2;
+    max-width: 580px;
+    text-align: center;
+    margin: 8px auto 0;
+}
+
+/* SECTION 04: SENSORY PILLS STACK */
+.sensory-pills-stack {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 8;
+}
+
+.sensory-pill {
+    background: rgba(18, 20, 24, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #FFFFFF;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-family: var(--dc-font-headline);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.25s;
+}
+
+.sensory-pill .pill-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--dc-red);
+    box-shadow: 0 0 10px var(--dc-red);
+}
+
+.sensory-pill:hover, .sensory-pill.pulse {
+    border-color: var(--dc-red);
+    transform: translateX(-8px);
+    box-shadow: 0 8px 24px rgba(228, 0, 43, 0.4);
+}
+
+/* SECTION 05: MOMENTS THUMBNAILS */
+.moments-thumbnails-row {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+.moment-thumb-card {
+    width: 90px;
+    height: 60px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.moment-thumb-card:hover, .moment-thumb-card.active {
+    border-color: var(--dc-red);
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(228, 0, 43, 0.45);
+}
+
+.moment-thumb-card .thumb-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    font-size: 9px;
+    font-weight: 800;
+    text-align: center;
+    padding: 3px 0;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+}
+
+.moment-active-indicator {
+    font-family: var(--dc-font-mono);
+    font-size: 13px;
+    font-weight: 800;
+    color: #FFA726;
+    letter-spacing: 2px;
+    margin-top: 14px;
+}
+
+/* SECTION 06: LIFESTYLE PILLS */
+.lifestyle-pills-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+.lifestyle-pill-btn {
+    background: rgba(22, 24, 28, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #FFFFFF;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-family: var(--dc-font-headline);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.lifestyle-pill-btn:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.lifestyle-pill-btn.active {
+    background: var(--dc-red);
+    border-color: var(--dc-red);
+    color: #FFFFFF;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(228, 0, 43, 0.45);
+}
+
+.lifestyle-active-label {
+    font-family: var(--dc-font-mono);
+    font-size: 13px;
+    font-weight: 800;
+    color: #00E676;
+    letter-spacing: 2px;
+    margin-top: 18px;
+}
+
+/* SECTION 07: QUALITY BADGES */
+.quality-badges-row {
+    display: flex;
+    gap: 32px;
+    margin-top: 36px;
+}
+
+.quality-badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.badge-icon-wrap {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #111418;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    color: #111418;
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.badge-title {
+    font-family: var(--dc-font-headline);
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    font-weight: 900;
+    color: #111418;
+}
+
+/* SECTION 09: POLAROIDS CLUSTER */
+.polaroid-cluster-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 480px;
+    margin: 40px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.polaroid-item {
+    position: absolute;
+    width: 240px;
+    background: #FFFFFF;
+    padding: 14px 14px 26px 14px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+    border-radius: 4px;
+    cursor: grab;
+    user-select: none;
+    transition: transform 0.3s ease;
+    touch-action: none;
+}
+
+.polaroid-item:active { cursor: grabbing; }
+
+.polaroid-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.polaroid-tape {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 75px;
+    height: 24px;
+    background: rgba(255, 235, 160, 0.75);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.polaroid-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    font-family: var(--dc-font-headline);
+    font-size: 12px;
+    color: #111418;
+}
+
+.polaroid-like-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #888888;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 800;
+    transition: all 0.2s;
+}
+
+.polaroid-like-btn.liked {
+    color: var(--dc-red);
+    transform: scale(1.15);
+}
+
+/* SECTION 06: BUBBLE POPPER GAME (Experiment 06) */
+.bubble-popper-stage {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    border-radius: 20px;
+    background: radial-gradient(circle at 50% 80%, rgba(228, 0, 43, 0.15) 0%, rgba(10, 12, 16, 0.95) 75%);
+    border: 1px solid rgba(228, 0, 43, 0.3);
+    overflow: hidden;
+}
+
+.game-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 80, 100, 0.45) 50%, rgba(228, 0, 43, 0.25) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 15px rgba(228, 0, 43, 0.35);
+    cursor: pointer;
+    transition: transform 0.15s, opacity 0.15s;
+    user-select: none;
+}
+
+.game-bubble.popped {
+    transform: scale(1.8) !important;
+    opacity: 0;
+}
+
+/* INTERACTIVE "BUY NOW" MODAL */
+.buy-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(18px);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.buy-modal-card {
+    background: #0E1013;
+    border: 2px solid rgba(228, 0, 43, 0.45);
+    border-radius: 28px;
+    width: 100%;
+    max-width: 520px;
+    padding: 36px;
+    box-shadow: 0 35px 120px rgba(228, 0, 43, 0.4);
+    color: #FFFFFF;
+    position: relative;
+}
+
+.buy-modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #FFFFFF;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.pack-select-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.pack-option-card {
+    background: #16181D;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-align: center;
+}
+
+.pack-option-card:hover, .pack-option-card.selected {
+    border-color: var(--dc-red);
+    background: rgba(228, 0, 43, 0.1);
+    transform: translateY(-2px);
+}
+
+.pack-title { font-family: var(--dc-font-headline); font-size: 13px; font-weight: 800; }
+.pack-price { font-size: 16px; font-weight: 900; color: var(--dc-red); margin-top: 4px; }
+
+/* Responsive Adjustments for Mobile & Tablets */
+@media (max-width: 900px) {
+    .inspo-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 32px;
+    }
+    
+    .inspo-content {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .inspo-headline {
+        font-size: clamp(38px, 10vw, 54px);
+    }
+    
+    .inspo-visual-stage {
+        min-height: 340px;
+    }
+    
+    .alcove-vault {
+        height: auto;
+        padding-top: 30px;
+    }
+    
+    .alcove-cans-row {
+        gap: 14px;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0 16px 30px;
+    }
+    
+    .alcove-can-item {
+        width: 90px;
+        flex-shrink: 0;
+    }
+    
+    .alcove-can-item img {
+        height: 190px;
+    }
+    
+    .sensory-pills-stack {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 24px;
+    }
+    
+    .polaroid-cluster-wrap {
+        height: 360px;
+    }
+    
+    .polaroid-item {
+        width: 180px;
+        padding: 10px 10px 18px 10px;
+    }
+    
+    .polaroid-item img {
+        height: 160px;
+    }
+    
+    .inspo-section-counter {
+        right: 24px;
+        bottom: 20px;
+    }
+}

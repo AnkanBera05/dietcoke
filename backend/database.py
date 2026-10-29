@@ -7,67 +7,67 @@ DB_PATH = os.path.join(os.path.dirname(__file__), "diet_coke.db")
 
 DEFAULT_PRODUCTS = [
     {
-        "slug": "original",
-        "name": "Diet Coke Original",
-        "tagline": "The Unapologetic Classic",
+        "slug": "classic",
+        "name": "Diet Coke Classic",
+        "tagline": "Same Iconic Taste. Zero Sugar.",
         "accent_color": "#E4002B",
         "accent_secondary": "#B00020",
         "can_style": "silver_red",
-        "badge": "ICONIC ORIGINAL",
+        "badge": "CLASSIC",
         "calories": 0,
         "sugar": "0g",
         "caffeine": "46mg",
         "volume": "355 mL / 12 FL OZ",
         "description": "Crisp, cold, and unmistakably bold. The timeless silver aluminum icon crafted with zero sugar, zero calories, and maximum effervescence.",
-        "taste_notes": json.dumps(["Crisp Carbonation", "Zero Sugar", "Aluminum Chill", "Signature Spiced Spark"]),
+        "taste_notes": json.dumps(["Crisp Carbonation", "Zero Sugar", "Aluminum Chill", "Iconic Kick"]),
         "sort_order": 1,
         "is_active": 1,
         "is_featured": 1
     },
     {
-        "slug": "cherry",
-        "name": "Diet Coke Feisty Cherry",
-        "tagline": "A Fiery Twist of Midnight Cherry",
-        "accent_color": "#B81D39",
-        "accent_secondary": "#5E0B1B",
-        "can_style": "silver_cherry",
-        "badge": "FAN FAVORITE",
-        "calories": 0,
-        "sugar": "0g",
-        "caffeine": "46mg",
-        "volume": "355 mL / 12 FL OZ",
-        "description": "An electrifying collision of deep dark cherry aromatics infused into our razor-sharp silver fizz. Tart, sultry, and instantly refreshing.",
-        "taste_notes": json.dumps(["Dark Cherry Burst", "Velvet Tang", "Electric Fizz", "Zero Guilt"]),
-        "sort_order": 2,
-        "is_active": 1,
-        "is_featured": 1
-    },
-    {
         "slug": "lime",
-        "name": "Diet Coke Sublime Lime",
+        "name": "Diet Coke Lime",
         "tagline": "Ultra-Crisp Zesty Shockwave",
-        "accent_color": "#00A859",
+        "accent_color": "#28A745",
         "accent_secondary": "#005C30",
         "can_style": "silver_lime",
-        "badge": "CITRUS SURGE",
+        "badge": "LIME",
         "calories": 0,
         "sugar": "0g",
         "caffeine": "46mg",
         "volume": "355 mL / 12 FL OZ",
         "description": "Sun-kissed Persian lime peel oils meeting explosive silver carbonation. A razor-sharp citrus zap that cuts through the heat instantly.",
         "taste_notes": json.dumps(["Key Lime Spark", "Glacial Cold", "Citrus Peel Bite", "Zero Calories"]),
+        "sort_order": 2,
+        "is_active": 1,
+        "is_featured": 1
+    },
+    {
+        "slug": "cherry",
+        "name": "Diet Coke Cherry",
+        "tagline": "A Fiery Twist of Midnight Cherry",
+        "accent_color": "#B81D39",
+        "accent_secondary": "#5E0B1B",
+        "can_style": "silver_cherry",
+        "badge": "CHERRY",
+        "calories": 0,
+        "sugar": "0g",
+        "caffeine": "46mg",
+        "volume": "355 mL / 12 FL OZ",
+        "description": "An electrifying collision of deep dark cherry aromatics infused into our razor-sharp silver fizz. Tart, sultry, and instantly refreshing.",
+        "taste_notes": json.dumps(["Dark Cherry Burst", "Velvet Tang", "Electric Fizz", "Zero Guilt"]),
         "sort_order": 3,
         "is_active": 1,
         "is_featured": 1
     },
     {
         "slug": "vanilla",
-        "name": "Diet Coke Velvet Vanilla",
+        "name": "Diet Coke Vanilla",
         "tagline": "Madagascar Silk Meets Raw Fizz",
         "accent_color": "#E5A93C",
         "accent_secondary": "#8D5B18",
         "can_style": "silver_vanilla",
-        "badge": "LIMITED EDITION",
+        "badge": "VANILLA",
         "calories": 0,
         "sugar": "0g",
         "caffeine": "46mg",
@@ -77,31 +77,87 @@ DEFAULT_PRODUCTS = [
         "sort_order": 4,
         "is_active": 1,
         "is_featured": 1
+    },
+    {
+        "slug": "raspberry",
+        "name": "Diet Coke Raspberry",
+        "tagline": "Electric Berry Voltage",
+        "accent_color": "#E91E63",
+        "accent_secondary": "#880E4F",
+        "can_style": "silver_raspberry",
+        "badge": "RASPBERRY",
+        "calories": 0,
+        "sugar": "0g",
+        "caffeine": "46mg",
+        "volume": "355 mL / 12 FL OZ",
+        "description": "Wild mountain raspberries bursting with tangy effervescence. Electric pink meets cold silver fizz.",
+        "taste_notes": json.dumps(["Wild Raspberry Spark", "Electric Berry Tang", "Zero Sugar", "Crisp Cold Finish"]),
+        "sort_order": 5,
+        "is_active": 1,
+        "is_featured": 1
     }
 ]
 
 DEFAULT_CONTENT = {
-    "hero_headline_1": "THAT'S",
-    "hero_headline_2": "SO",
-    "hero_headline_3": "DIET COKE.",
-    "hero_subheadline": "Bold taste. Zero sugar. Maximum refreshment.",
-    "hero_cta": "EXPLORE THE TASTE",
-    "ticker_announcement": "/// LIVE CAN EXPERIENCE /// ZERO SUGAR /// UNAPOLOGETICALLY CRISP /// 100% RECYCLABLE ALUMINUM /// THAT'S SO DIET COKE ///",
-    "fizz_headline": "TASTE THE FIZZ.",
-    "fizz_subheadline": "Millions of microscopic carbonation micro-bubbles suspended in ice-cold silver aluminum. Every sip cracks open an adrenaline rush.",
-    "can_opener_headline": "PULL TO OPEN",
-    "can_opener_subheadline": "Grab the aluminum ring. Feel the pressurized seal release.",
-    "can_opener_success": "AHHH. THAT'S BETTER.",
-    "story_heading": "BORN IN 1982. REBORN EVERY SECOND.",
-    "story_body": "Diet Coke isn't an alternative. It is an obsession. A relentless pursuit of ice-cold silver perfection, unapologetic individuality, and unmatched crisp bite. No compromises. Zero sugar. All attitude.",
-    "stat_sugar": "0g",
-    "stat_sugar_label": "Zero Sugar",
-    "stat_calories": "0",
-    "stat_calories_label": "Zero Calories",
-    "stat_refreshment": "100%",
-    "stat_refreshment_label": "Crisp Silver Kick",
-    "stat_year": "1982",
-    "stat_year_label": "Iconic Heritage"
+    # 01 Hero
+    "sec1_headline_1": "SAME",
+    "sec1_headline_2": "ICONIC TASTE",
+    "sec1_headline_3": "ZERO SUGAR",
+    "sec1_subheadline": "BOLD. REFRESHING. ALWAYS A GOOD IDEA.",
+    "sec1_cta": "EXPLORE →",
+    
+    # 02 Fizz Moves You
+    "sec2_headline_1": "A FIZZ THAT",
+    "sec2_headline_2": "MOVES YOU",
+    "sec2_subheadline": "Crisp bubbles. Bold moments. Diet Coke keeps life exciting.",
+    "sec2_cta": "FEEL THE FIZZ ▶",
+
+    # 03 Find Your Flavor
+    "sec3_headline_1": "FIND",
+    "sec3_headline_2": "YOUR FLAVOR",
+    "sec3_subheadline": "Same bold taste. More ways to enjoy.",
+
+    # 04 Press Play
+    "sec4_headline_1": "PRESS",
+    "sec4_headline_2": "PLAY",
+    "sec4_subheadline": "The sound of something refreshing.",
+    "sec4_cta": "OPEN THE CAN ▶",
+
+    # 05 Brighter Days
+    "sec5_headline_1": "GOOD TASTE",
+    "sec5_headline_2": "FOR BRIGHTER DAYS",
+    "sec5_subheadline": "From busy mornings to late night plans, Diet Coke fits every moment.",
+    "sec5_cta": "DISCOVER MOMENTS →",
+
+    # 06 Different Places
+    "sec6_headline_1": "SAME ENERGY",
+    "sec6_headline_2": "DIFFERENT PLACES",
+    "sec6_subheadline": "Gym, work, travel or night out — Diet Coke goes wherever you do.",
+
+    # 07 Real Refreshment
+    "sec7_headline_1": "REAL",
+    "sec7_headline_2": "REFRESHMENT",
+    "sec7_subheadline": "Zero Sugar. Bold Taste. Made for what's next.",
+
+    # 08 A Brighter Tomorrow
+    "sec8_headline_1": "A BRIGHTER",
+    "sec8_headline_2": "TOMORROW",
+    "sec8_subheadline": "We're working towards a more sustainable future for the moments that matter.",
+    "sec8_cta": "OUR COMMITMENT →",
+
+    # 09 Real Moments
+    "sec9_headline_1": "REAL PEOPLE",
+    "sec9_headline_2": "REAL MOMENTS",
+    "sec9_subheadline": "Tag your #DietCokeMoment",
+
+    # 10 Moments Ahead
+    "sec10_headline_1": "MORE",
+    "sec10_headline_2": "GOOD MOMENTS",
+    "sec10_headline_3": "AHEAD",
+    "sec10_subheadline": "Grab a Diet Coke and make the next moment yours.",
+    "sec10_cta": "BUY NOW ▶",
+
+    "ticker_announcement": "/// LIVE CAN EXPERIENCE /// ZERO SUGAR /// UNAPOLOGETICALLY CRISP /// 100% RECYCLABLE ALUMINUM /// THAT'S SO DIET COKE ///"
 }
 
 
@@ -115,11 +171,10 @@ def get_db():
     return conn
 
 
-def init_db():
+def init_db(force_reseed=False):
     conn = get_db()
     cursor = conn.cursor()
 
-    # Site content table
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS site_content (
             key TEXT PRIMARY KEY,
@@ -127,7 +182,6 @@ def init_db():
         )
     """)
 
-    # Products table
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS products (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -151,7 +205,6 @@ def init_db():
         )
     """)
 
-    # Admin users table
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS admin_users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -162,24 +215,25 @@ def init_db():
         )
     """)
 
-    # Telemetry / Analytics table
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS telemetry (
             id INTEGER PRIMARY KEY,
-            visits_count INTEGER DEFAULT 1842,
-            can_pops_count INTEGER DEFAULT 624,
-            sound_enabled_count INTEGER DEFAULT 412,
-            flavor_clicks TEXT DEFAULT '{"original": 940, "cherry": 412, "lime": 320, "vanilla": 170}'
+            visits_count INTEGER DEFAULT 2410,
+            can_pops_count INTEGER DEFAULT 842,
+            sound_enabled_count INTEGER DEFAULT 618,
+            flavor_clicks TEXT DEFAULT '{\"classic\": 1200, \"lime\": 520, \"cherry\": 640, \"vanilla\": 380, \"raspberry\": 450}'
         )
     """)
 
-    # Check and seed site_content
+    if force_reseed:
+        cursor.execute("DELETE FROM site_content")
+        cursor.execute("DELETE FROM products")
+
     cursor.execute("SELECT COUNT(*) FROM site_content")
     if cursor.fetchone()[0] == 0:
         for k, v in DEFAULT_CONTENT.items():
             cursor.execute("INSERT INTO site_content (key, value) VALUES (?, ?)", (k, v))
 
-    # Check and seed products
     cursor.execute("SELECT COUNT(*) FROM products")
     if cursor.fetchone()[0] == 0:
         for p in DEFAULT_PRODUCTS:
@@ -193,7 +247,6 @@ def init_db():
                 p["description"], p["taste_notes"], p["sort_order"], p["is_active"], p["is_featured"]
             ))
 
-    # Check and seed default admin user
     cursor.execute("SELECT COUNT(*) FROM admin_users")
     if cursor.fetchone()[0] == 0:
         default_salt = "dietcoke_salt_2026"
@@ -203,15 +256,14 @@ def init_db():
             VALUES (?, ?, ?)
         """, ("admin", pwd_hash, default_salt))
 
-    # Check and seed telemetry
     cursor.execute("SELECT COUNT(*) FROM telemetry")
     if cursor.fetchone()[0] == 0:
-        cursor.execute("INSERT INTO telemetry (id, visits_count, can_pops_count, sound_enabled_count) VALUES (1, 1842, 624, 412)")
+        cursor.execute("INSERT INTO telemetry (id, visits_count, can_pops_count, sound_enabled_count) VALUES (1, 2410, 842, 618)")
 
     conn.commit()
     conn.close()
 
 
 if __name__ == "__main__":
-    init_db()
-    print("Database initialized successfully.")
+    init_db(force_reseed=True)
+    print("Database updated and re-seeded with 5 authentic inspiration flavors and 10 section copy keys.")
